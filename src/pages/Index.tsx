@@ -4,6 +4,8 @@ import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { useToast } from '@/hooks/use-toast';
 import Icon from '@/components/ui/icon';
 
 const heroSlides = [
@@ -116,6 +118,61 @@ const advantages = [
 export default function Index() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isHeaderFixed, setIsHeaderFixed] = useState(false);
+  const [isPriceModalOpen, setIsPriceModalOpen] = useState(false);
+  const { toast } = useToast();
+
+  const [priceFormData, setPriceFormData] = useState({
+    name: '',
+    company: '',
+    email: '',
+    phone: '',
+    message: '',
+    terms: false
+  });
+
+  const [contactFormData, setContactFormData] = useState({
+    name: '',
+    company: '',
+    email: '',
+    phone: '',
+    message: '',
+    terms: false
+  });
+
+  const handlePriceSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!priceFormData.terms) {
+      toast({
+        title: 'Ошибка',
+        description: 'Необходимо согласие на обработку персональных данных',
+        variant: 'destructive'
+      });
+      return;
+    }
+    toast({
+      title: 'Запрос отправлен!',
+      description: 'Мы свяжемся с вами в ближайшее время для обсуждения условий сотрудничества'
+    });
+    setPriceFormData({ name: '', company: '', email: '', phone: '', message: '', terms: false });
+    setIsPriceModalOpen(false);
+  };
+
+  const handleContactSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!contactFormData.terms) {
+      toast({
+        title: 'Ошибка',
+        description: 'Необходимо согласие на обработку персональных данных',
+        variant: 'destructive'
+      });
+      return;
+    }
+    toast({
+      title: 'Сообщение отправлено!',
+      description: 'Спасибо за ваш запрос. Наш менеджер свяжется с вами в ближайшее время'
+    });
+    setContactFormData({ name: '', company: '', email: '', phone: '', message: '', terms: false });
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -152,9 +209,83 @@ export default function Index() {
             <a onClick={() => scrollToSection('contacts')} className="text-sm font-medium hover:text-primary transition-colors cursor-pointer">Контакты</a>
           </nav>
 
-          <Button className="bg-primary hover:bg-primary/90 text-white font-semibold shadow-lg">
-            Запрос прайса
-          </Button>
+          <Dialog open={isPriceModalOpen} onOpenChange={setIsPriceModalOpen}>
+            <DialogTrigger asChild>
+              <Button className="bg-primary hover:bg-primary/90 text-white font-semibold shadow-lg">
+                Запрос прайса
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[500px] bg-card border-border">
+              <DialogHeader>
+                <DialogTitle className="text-2xl font-heading font-bold">Запрос оптового прайс-листа</DialogTitle>
+                <DialogDescription className="text-muted-foreground">
+                  Заполните форму, и мы отправим вам актуальный прайс-лист и условия сотрудничества
+                </DialogDescription>
+              </DialogHeader>
+              <form onSubmit={handlePriceSubmit} className="space-y-4 mt-4">
+                <div>
+                  <Input 
+                    placeholder="Ваше имя" 
+                    value={priceFormData.name}
+                    onChange={(e) => setPriceFormData({...priceFormData, name: e.target.value})}
+                    className="bg-background border-border h-11" 
+                    required
+                  />
+                </div>
+                <div>
+                  <Input 
+                    placeholder="Название компании" 
+                    value={priceFormData.company}
+                    onChange={(e) => setPriceFormData({...priceFormData, company: e.target.value})}
+                    className="bg-background border-border h-11" 
+                    required
+                  />
+                </div>
+                <div>
+                  <Input 
+                    placeholder="Email" 
+                    type="email"
+                    value={priceFormData.email}
+                    onChange={(e) => setPriceFormData({...priceFormData, email: e.target.value})}
+                    className="bg-background border-border h-11" 
+                    required
+                  />
+                </div>
+                <div>
+                  <Input 
+                    placeholder="Телефон" 
+                    type="tel"
+                    value={priceFormData.phone}
+                    onChange={(e) => setPriceFormData({...priceFormData, phone: e.target.value})}
+                    className="bg-background border-border h-11" 
+                    required
+                  />
+                </div>
+                <div>
+                  <Textarea 
+                    placeholder="Дополнительная информация (опционально)" 
+                    value={priceFormData.message}
+                    onChange={(e) => setPriceFormData({...priceFormData, message: e.target.value})}
+                    rows={3} 
+                    className="bg-background border-border resize-none" 
+                  />
+                </div>
+                <div className="flex items-start gap-3">
+                  <Checkbox 
+                    id="price-terms" 
+                    checked={priceFormData.terms}
+                    onCheckedChange={(checked) => setPriceFormData({...priceFormData, terms: checked as boolean})}
+                  />
+                  <label htmlFor="price-terms" className="text-sm text-muted-foreground cursor-pointer leading-relaxed">
+                    Согласен с обработкой персональных данных
+                  </label>
+                </div>
+                <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white font-semibold h-11">
+                  Отправить запрос
+                </Button>
+              </form>
+            </DialogContent>
+          </Dialog>
         </div>
       </header>
 
@@ -175,10 +306,10 @@ export default function Index() {
                   {slide.subtitle}
                 </p>
                 <div className="flex flex-col md:flex-row gap-4 justify-center animate-scale-in">
-                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-semibold px-10 py-6 text-lg shadow-2xl">
+                  <Button size="lg" onClick={() => setIsPriceModalOpen(true)} className="bg-primary hover:bg-primary/90 text-white font-semibold px-10 py-6 text-lg shadow-2xl">
                     Скачать каталог
                   </Button>
-                  <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-background font-semibold px-10 py-6 text-lg">
+                  <Button size="lg" onClick={() => scrollToSection('contacts')} variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-background font-semibold px-10 py-6 text-lg">
                     Стать партнером
                   </Button>
                 </div>
@@ -376,29 +507,66 @@ export default function Index() {
 
             <Card className="bg-card border-border p-8">
               <h3 className="text-3xl font-heading font-bold mb-8">Форма обратной связи</h3>
-              <form className="space-y-5">
+              <form onSubmit={handleContactSubmit} className="space-y-5">
                 <div>
-                  <Input placeholder="Ваше имя" className="bg-background border-border h-12" />
+                  <Input 
+                    placeholder="Ваше имя" 
+                    value={contactFormData.name}
+                    onChange={(e) => setContactFormData({...contactFormData, name: e.target.value})}
+                    className="bg-background border-border h-12" 
+                    required
+                  />
                 </div>
                 <div>
-                  <Input placeholder="Название компании" className="bg-background border-border h-12" />
+                  <Input 
+                    placeholder="Название компании" 
+                    value={contactFormData.company}
+                    onChange={(e) => setContactFormData({...contactFormData, company: e.target.value})}
+                    className="bg-background border-border h-12" 
+                    required
+                  />
                 </div>
                 <div>
-                  <Input placeholder="Email" type="email" className="bg-background border-border h-12" />
+                  <Input 
+                    placeholder="Email" 
+                    type="email"
+                    value={contactFormData.email}
+                    onChange={(e) => setContactFormData({...contactFormData, email: e.target.value})}
+                    className="bg-background border-border h-12" 
+                    required
+                  />
                 </div>
                 <div>
-                  <Input placeholder="Телефон" type="tel" className="bg-background border-border h-12" />
+                  <Input 
+                    placeholder="Телефон" 
+                    type="tel"
+                    value={contactFormData.phone}
+                    onChange={(e) => setContactFormData({...contactFormData, phone: e.target.value})}
+                    className="bg-background border-border h-12" 
+                    required
+                  />
                 </div>
                 <div>
-                  <Textarea placeholder="Ваше сообщение" rows={5} className="bg-background border-border resize-none" />
+                  <Textarea 
+                    placeholder="Ваше сообщение" 
+                    value={contactFormData.message}
+                    onChange={(e) => setContactFormData({...contactFormData, message: e.target.value})}
+                    rows={5} 
+                    className="bg-background border-border resize-none" 
+                    required
+                  />
                 </div>
                 <div className="flex items-start gap-3">
-                  <Checkbox id="terms" className="mt-1" />
-                  <label htmlFor="terms" className="text-sm text-muted-foreground cursor-pointer leading-relaxed">
+                  <Checkbox 
+                    id="contact-terms" 
+                    checked={contactFormData.terms}
+                    onCheckedChange={(checked) => setContactFormData({...contactFormData, terms: checked as boolean})}
+                  />
+                  <label htmlFor="contact-terms" className="text-sm text-muted-foreground cursor-pointer leading-relaxed">
                     Согласен с обработкой персональных данных и условиями политики конфиденциальности
                   </label>
                 </div>
-                <Button className="w-full bg-primary hover:bg-primary/90 text-white font-semibold h-12 text-base shadow-lg">
+                <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white font-semibold h-12 text-base shadow-lg">
                   Отправить запрос
                 </Button>
               </form>
