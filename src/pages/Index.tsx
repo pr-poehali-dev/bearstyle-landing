@@ -119,6 +119,7 @@ export default function Index() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isHeaderFixed, setIsHeaderFixed] = useState(false);
   const [isPriceModalOpen, setIsPriceModalOpen] = useState(false);
+  const [currentProductSlide, setCurrentProductSlide] = useState(0);
   const { toast } = useToast();
 
   const [priceFormData, setPriceFormData] = useState({
@@ -381,29 +382,64 @@ export default function Index() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {products.map((product, index) => (
-              <Card key={index} className="bg-card border-border overflow-hidden hover:shadow-2xl hover:border-primary transition-all duration-300 group">
-                <div className="aspect-square overflow-hidden bg-muted">
-                  <img 
-                    src={product.image} 
-                    alt={product.name} 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
-                  />
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-xs text-primary uppercase tracking-widest font-semibold">{product.category}</span>
-                    <span className="text-xs text-muted-foreground">{product.volume}</span>
+          <div className="relative">
+            <div className="overflow-hidden">
+              <div 
+                className="flex transition-transform duration-500 ease-out gap-8"
+                style={{ transform: `translateX(-${currentProductSlide * (100 / 3 + 2.67)}%)` }}
+              >
+                {products.map((product, index) => (
+                  <div key={index} className="min-w-[calc(33.333%-1.33rem)] md:min-w-[calc(33.333%-1.33rem)]">
+                    <Card className="bg-card border-border overflow-hidden hover:shadow-2xl hover:border-primary transition-all duration-300 group h-full">
+                      <div className="aspect-square overflow-hidden bg-muted">
+                        <img 
+                          src={product.image} 
+                          alt={product.name} 
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                        />
+                      </div>
+                      <div className="p-6">
+                        <div className="flex items-center justify-between mb-3">
+                          <span className="text-xs text-primary uppercase tracking-widest font-semibold">{product.category}</span>
+                          <span className="text-xs text-muted-foreground">{product.volume}</span>
+                        </div>
+                        <h3 className="text-2xl font-heading font-bold mb-3">{product.name}</h3>
+                        <p className="text-muted-foreground mb-6 leading-relaxed">{product.description}</p>
+                        <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white">
+                          Подробнее
+                        </Button>
+                      </div>
+                    </Card>
                   </div>
-                  <h3 className="text-2xl font-heading font-bold mb-3">{product.name}</h3>
-                  <p className="text-muted-foreground mb-6 leading-relaxed">{product.description}</p>
-                  <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white">
-                    Подробнее
-                  </Button>
-                </div>
-              </Card>
-            ))}
+                ))}
+              </div>
+            </div>
+
+            <button
+              onClick={() => setCurrentProductSlide(Math.max(0, currentProductSlide - 1))}
+              disabled={currentProductSlide === 0}
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-6 bg-primary hover:bg-primary/90 text-white p-4 rounded-full transition-all shadow-xl disabled:opacity-30 disabled:cursor-not-allowed z-10"
+            >
+              <Icon name="ChevronLeft" size={28} />
+            </button>
+            
+            <button
+              onClick={() => setCurrentProductSlide(Math.min(products.length - 3, currentProductSlide + 1))}
+              disabled={currentProductSlide >= products.length - 3}
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-6 bg-primary hover:bg-primary/90 text-white p-4 rounded-full transition-all shadow-xl disabled:opacity-30 disabled:cursor-not-allowed z-10"
+            >
+              <Icon name="ChevronRight" size={28} />
+            </button>
+
+            <div className="flex justify-center gap-2 mt-12">
+              {Array.from({ length: products.length - 2 }).map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentProductSlide(index)}
+                  className={`h-1 rounded-full transition-all duration-300 ${index === currentProductSlide ? 'bg-primary w-12' : 'bg-muted w-8'}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
