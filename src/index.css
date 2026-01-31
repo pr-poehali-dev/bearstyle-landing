@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -6,34 +6,34 @@
 
 @layer base {
   :root {
-    --background: 26 31 44;
-    --foreground: 200 200 201;
-    --card: 34 40 56;
-    --card-foreground: 200 200 201;
-    --popover: 34 40 56;
-    --popover-foreground: 200 200 201;
-    --primary: 139 92 246;
+    --background: 26 26 26;
+    --foreground: 240 240 240;
+    --card: 35 35 35;
+    --card-foreground: 240 240 240;
+    --popover: 35 35 35;
+    --popover-foreground: 240 240 240;
+    --primary: 194 74 44;
     --primary-foreground: 255 255 255;
-    --secondary: 126 105 171;
-    --secondary-foreground: 255 255 255;
-    --muted: 68 68 68;
-    --muted-foreground: 138 137 140;
-    --accent: 139 92 246;
+    --secondary: 60 60 60;
+    --secondary-foreground: 240 240 240;
+    --muted: 50 50 50;
+    --muted-foreground: 160 160 160;
+    --accent: 194 74 44;
     --accent-foreground: 255 255 255;
-    --destructive: 234 56 76;
+    --destructive: 220 38 38;
     --destructive-foreground: 255 255 255;
-    --border: 51 51 54;
-    --input: 51 51 54;
-    --ring: 139 92 246;
+    --border: 60 60 60;
+    --input: 45 45 45;
+    --ring: 194 74 44;
     --radius: 0.5rem;
-    --sidebar-background: 26 31 44;
-    --sidebar-foreground: 200 200 201;
-    --sidebar-primary: 139 92 246;
+    --sidebar-background: 26 26 26;
+    --sidebar-foreground: 240 240 240;
+    --sidebar-primary: 194 74 44;
     --sidebar-primary-foreground: 255 255 255;
-    --sidebar-accent: 34 40 56;
-    --sidebar-accent-foreground: 200 200 201;
-    --sidebar-border: 51 51 54;
-    --sidebar-ring: 139 92 246;
+    --sidebar-accent: 35 35 35;
+    --sidebar-accent-foreground: 240 240 240;
+    --sidebar-border: 60 60 60;
+    --sidebar-ring: 194 74 44;
   }
 }
 
@@ -56,9 +56,9 @@
 
 @layer utilities {
   .font-heading {
-    font-family: "Oswald", sans-serif;
+    font-family: "Montserrat", sans-serif;
   }
   .font-body {
-    font-family: "Roboto", sans-serif;
+    font-family: "Open Sans", sans-serif;
   }
 }

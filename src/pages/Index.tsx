@@ -4,81 +4,89 @@ import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import Icon from '@/components/ui/icon';
 
 const heroSlides = [
   {
-    image: 'https://cdn.poehali.dev/projects/b977ae30-8b22-4b8d-8ef6-be415aeffd5d/files/8aefe726-f9e5-4074-8b8d-eb9667fb6792.jpg',
-    title: 'Мощный стайлинг для сильного образа',
-    subtitle: 'Профессиональные средства для создания безупречных укладок'
+    image: 'https://source.unsplash.com/1920x1080/?barbershop,man,hairstyle',
+    title: 'Стиль для настоящих мужчин',
+    subtitle: 'Профессиональная косметика для барберов'
   },
   {
-    image: 'https://cdn.poehali.dev/projects/b977ae30-8b22-4b8d-8ef6-be415aeffd5d/files/a1170e69-01e4-4d23-bc60-37f8bca11524.jpg',
-    title: 'Профессиональные средства для барберов',
-    subtitle: 'Премиальная косметика, проверенная тысячами мастеров'
+    image: 'https://source.unsplash.com/1920x1080/?hair,styling,man',
+    title: 'Безупречная укладка',
+    subtitle: 'Премиальные средства для идеального образа'
   },
   {
-    image: 'https://cdn.poehali.dev/projects/b977ae30-8b22-4b8d-8ef6-be415aeffd5d/files/a9e7c183-3f61-49b6-919e-545a77974d17.jpg',
-    title: 'Надежный партнер для вашего бизнеса',
-    subtitle: 'Оптовые поставки с гарантией качества'
+    image: 'https://source.unsplash.com/1920x1080/?cosmetic,product,luxury',
+    title: 'Качество проверенное временем',
+    subtitle: 'Оптовые поставки по всей России'
   }
 ];
 
 const products = [
   {
     category: 'Помада для волос',
-    name: 'Помада "Медвежья хватка"',
-    description: 'Сильная фиксация с естественным блеском',
-    image: 'https://cdn.poehali.dev/projects/b977ae30-8b22-4b8d-8ef6-be415aeffd5d/files/a1170e69-01e4-4d23-bc60-37f8bca11524.jpg'
+    name: 'Медвежья хватка',
+    description: 'Сильная фиксация с естественным блеском на весь день',
+    image: 'https://source.unsplash.com/400x400/?cosmetic,jar',
+    volume: '100 мл'
   },
   {
     category: 'Помада для волос',
-    name: 'Помада "Дикая природа"',
-    description: 'Матовый финиш, гибкая фиксация',
-    image: 'https://cdn.poehali.dev/projects/b977ae30-8b22-4b8d-8ef6-be415aeffd5d/files/a1170e69-01e4-4d23-bc60-37f8bca11524.jpg'
+    name: 'Дикая природа',
+    description: 'Матовый финиш и гибкая фиксация для свободного стиля',
+    image: 'https://source.unsplash.com/400x400/?cosmetic,container',
+    volume: '100 мл'
   },
   {
     category: 'Помада для волос',
-    name: 'Помада "Северный ветер"',
+    name: 'Северный ветер',
     description: 'Легкая текстура для естественных укладок',
-    image: 'https://cdn.poehali.dev/projects/b977ae30-8b22-4b8d-8ef6-be415aeffd5d/files/a1170e69-01e4-4d23-bc60-37f8bca11524.jpg'
+    image: 'https://source.unsplash.com/400x400/?cosmetic,bottle',
+    volume: '80 мл'
   },
   {
     category: 'Паста для волос',
-    name: 'Паста "Таежная сила"',
-    description: 'Максимальная фиксация, матовый эффект',
-    image: 'https://cdn.poehali.dev/projects/b977ae30-8b22-4b8d-8ef6-be415aeffd5d/files/a1170e69-01e4-4d23-bc60-37f8bca11524.jpg'
+    name: 'Таежная сила',
+    description: 'Максимальная фиксация с матовым эффектом',
+    image: 'https://source.unsplash.com/400x400/?cosmetic,tin',
+    volume: '100 мл'
   },
   {
     category: 'Паста для волос',
-    name: 'Паста "Гранитная основа"',
-    description: 'Долговременная укладка с текстурой',
-    image: 'https://cdn.poehali.dev/projects/b977ae30-8b22-4b8d-8ef6-be415aeffd5d/files/a1170e69-01e4-4d23-bc60-37f8bca11524.jpg'
+    name: 'Гранитная основа',
+    description: 'Долговременная укладка с текстурирующим эффектом',
+    image: 'https://source.unsplash.com/400x400/?product,jar',
+    volume: '100 мл'
   },
   {
     category: 'Паста для волос',
-    name: 'Паста "Стальная воля"',
-    description: 'Профессиональная укладка на весь день',
-    image: 'https://cdn.poehali.dev/projects/b977ae30-8b22-4b8d-8ef6-be415aeffd5d/files/a1170e69-01e4-4d23-bc60-37f8bca11524.jpg'
+    name: 'Стальная воля',
+    description: 'Профессиональная укладка для сложных причесок',
+    image: 'https://source.unsplash.com/400x400/?cosmetic,package',
+    volume: '80 мл'
   },
   {
     category: 'Воск для волос',
-    name: 'Воск "Гранитная фиксация"',
-    description: 'Экстремальная фиксация для сложных укладок',
-    image: 'https://cdn.poehali.dev/projects/b977ae30-8b22-4b8d-8ef6-be415aeffd5d/files/a1170e69-01e4-4d23-bc60-37f8bca11524.jpg'
+    name: 'Гранитная фиксация',
+    description: 'Экстремальная фиксация для креативных укладок',
+    image: 'https://source.unsplash.com/400x400/?cosmetic,wax',
+    volume: '75 мл'
   },
   {
     category: 'Воск для волос',
-    name: 'Воск "Дубовая прочность"',
-    description: 'Натуральный состав, сильная фиксация',
-    image: 'https://cdn.poehali.dev/projects/b977ae30-8b22-4b8d-8ef6-be415aeffd5d/files/a1170e69-01e4-4d23-bc60-37f8bca11524.jpg'
+    name: 'Дубовая прочность',
+    description: 'Натуральный состав, сильная и надежная фиксация',
+    image: 'https://source.unsplash.com/400x400/?organic,cosmetic',
+    volume: '75 мл'
   },
   {
     category: 'Воск для волос',
-    name: 'Воск "Железная хватка"',
-    description: 'Премиальная фиксация с блеском',
-    image: 'https://cdn.poehali.dev/projects/b977ae30-8b22-4b8d-8ef6-be415aeffd5d/files/a1170e69-01e4-4d23-bc60-37f8bca11524.jpg'
+    name: 'Железная хватка',
+    description: 'Премиальная фиксация с естественным блеском',
+    image: 'https://source.unsplash.com/400x400/?luxury,cosmetic',
+    volume: '75 мл'
   }
 ];
 
@@ -86,22 +94,22 @@ const advantages = [
   {
     icon: 'Award',
     title: 'Сертификаты качества',
-    description: 'Соответствие международным стандартам'
+    description: 'Вся продукция соответствует международным стандартам и имеет необходимые сертификаты'
   },
   {
     icon: 'Users',
-    title: 'Работа с салонами',
-    description: 'Более 500 барбершопов по всей России'
+    title: 'Более 500 барбершопов',
+    description: 'Профессиональные мастера по всей России доверяют нашему бренду'
   },
   {
     icon: 'Flask',
     title: 'Профессиональные формулы',
-    description: 'Разработано с ведущими барберами'
+    description: 'Разработано совместно с ведущими барберами и технологами индустрии'
   },
   {
     icon: 'Truck',
     title: 'Быстрая доставка',
-    description: 'Отгрузка оптовых партий за 24 часа'
+    description: 'Отгрузка оптовых партий по всей России в течение 24 часов'
   }
 ];
 
@@ -130,22 +138,22 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isHeaderFixed ? 'bg-background/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'}`}>
-        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="text-3xl font-heading font-bold text-primary cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            BearStyle
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isHeaderFixed ? 'bg-background/95 backdrop-blur-md shadow-2xl' : 'bg-transparent'}`}>
+        <div className="container mx-auto px-6 py-5 flex items-center justify-between">
+          <div className="text-3xl font-heading font-bold text-primary cursor-pointer tracking-tight" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            🐻 BEARSTYLE
           </div>
           
           <nav className="hidden md:flex items-center gap-8">
             <a onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="text-sm font-medium hover:text-primary transition-colors cursor-pointer">Главная</a>
             <a onClick={() => scrollToSection('advantages')} className="text-sm font-medium hover:text-primary transition-colors cursor-pointer">Преимущества</a>
             <a onClick={() => scrollToSection('products')} className="text-sm font-medium hover:text-primary transition-colors cursor-pointer">Продукция</a>
-            <a onClick={() => scrollToSection('about')} className="text-sm font-medium hover:text-primary transition-colors cursor-pointer">О нас</a>
+            <a onClick={() => scrollToSection('about')} className="text-sm font-medium hover:text-primary transition-colors cursor-pointer">О бренде</a>
             <a onClick={() => scrollToSection('contacts')} className="text-sm font-medium hover:text-primary transition-colors cursor-pointer">Контакты</a>
           </nav>
 
-          <Button className="bg-primary hover:bg-primary/90 text-white font-medium">
-            Оптовый запрос
+          <Button className="bg-primary hover:bg-primary/90 text-white font-semibold shadow-lg">
+            Запрос прайса
           </Button>
         </div>
       </header>
@@ -156,22 +164,22 @@ export default function Index() {
             key={index}
             className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}
           >
-            <div className="absolute inset-0 bg-black/60 z-10" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80 z-10" />
             <img src={slide.image} alt={slide.title} className="w-full h-full object-cover" />
             <div className="absolute inset-0 z-20 flex items-center justify-center">
-              <div className="text-center max-w-4xl px-6 animate-fade-in">
-                <h1 className="text-5xl md:text-7xl font-heading font-bold text-white mb-6">
+              <div className="text-center max-w-5xl px-6">
+                <h1 className="text-6xl md:text-8xl font-heading font-bold text-white mb-6 tracking-tight leading-tight animate-fade-in">
                   {slide.title}
                 </h1>
-                <p className="text-xl md:text-2xl text-gray-200 mb-8">
+                <p className="text-xl md:text-3xl text-gray-300 mb-10 font-light animate-fade-in">
                   {slide.subtitle}
                 </p>
-                <div className="flex gap-4 justify-center">
-                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-medium px-8">
+                <div className="flex flex-col md:flex-row gap-4 justify-center animate-scale-in">
+                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-semibold px-10 py-6 text-lg shadow-2xl">
                     Скачать каталог
                   </Button>
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-background font-medium px-8">
-                    Узнать условия
+                  <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-background font-semibold px-10 py-6 text-lg">
+                    Стать партнером
                   </Button>
                 </div>
               </div>
@@ -179,211 +187,273 @@ export default function Index() {
           </div>
         ))}
         
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex gap-2">
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex gap-3">
           {heroSlides.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all ${index === currentSlide ? 'bg-primary w-8' : 'bg-white/50'}`}
+              className={`h-1 rounded-full transition-all duration-300 ${index === currentSlide ? 'bg-primary w-12' : 'bg-white/50 w-8'}`}
             />
           ))}
         </div>
 
         <button
           onClick={() => setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)}
-          className="absolute left-6 top-1/2 transform -translate-y-1/2 z-30 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-all"
+          className="absolute left-8 top-1/2 transform -translate-y-1/2 z-30 bg-white/10 hover:bg-primary/90 text-white p-4 rounded-full transition-all backdrop-blur-sm"
         >
-          <Icon name="ChevronLeft" size={24} />
+          <Icon name="ChevronLeft" size={28} />
         </button>
         <button
           onClick={() => setCurrentSlide((prev) => (prev + 1) % heroSlides.length)}
-          className="absolute right-6 top-1/2 transform -translate-y-1/2 z-30 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-all"
+          className="absolute right-8 top-1/2 transform -translate-y-1/2 z-30 bg-white/10 hover:bg-primary/90 text-white p-4 rounded-full transition-all backdrop-blur-sm"
         >
-          <Icon name="ChevronRight" size={24} />
+          <Icon name="ChevronRight" size={28} />
         </button>
       </section>
 
-      <section id="advantages" className="py-24 bg-card">
-        <div className="container mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-16">
-            Почему BearStyle выбирают профессионалы?
-          </h2>
+      <section id="advantages" className="py-32 bg-card relative">
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'url(https://source.unsplash.com/1920x1080/?texture,dark)', backgroundSize: 'cover' }} />
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl font-heading font-bold mb-6">
+              Почему выбирают BearStyle?
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Мы предлагаем не просто косметику — это инструменты для создания безупречного стиля
+            </p>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {advantages.map((advantage, index) => (
-              <div key={index} className="text-center animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className="w-16 h-16 mx-auto mb-4 bg-primary/20 rounded-full flex items-center justify-center">
-                  <Icon name={advantage.icon as any} size={32} className="text-primary" />
+              <Card key={index} className="bg-background border-border p-8 text-center hover:border-primary transition-all duration-300 hover:scale-105 animate-fade-in" style={{ animationDelay: `${index * 0.15}s` }}>
+                <div className="w-20 h-20 mx-auto mb-6 bg-primary/10 rounded-full flex items-center justify-center">
+                  <Icon name={advantage.icon as any} size={40} className="text-primary" />
                 </div>
-                <h3 className="text-xl font-heading font-semibold mb-2">{advantage.title}</h3>
-                <p className="text-muted-foreground">{advantage.description}</p>
-              </div>
+                <h3 className="text-xl font-heading font-bold mb-3">{advantage.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{advantage.description}</p>
+              </Card>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="products" className="py-24">
-        <div className="container mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-16">
-            Наша продукция
-          </h2>
-          <Carousel className="w-full max-w-6xl mx-auto">
-            <CarouselContent>
-              {products.map((product, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                  <Card className="bg-card border-border overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                    <div className="aspect-square overflow-hidden">
-                      <img src={product.image} alt={product.name} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
-                    </div>
-                    <div className="p-6">
-                      <p className="text-xs text-primary uppercase tracking-wide mb-2">{product.category}</p>
-                      <h3 className="text-xl font-heading font-semibold mb-2">{product.name}</h3>
-                      <p className="text-muted-foreground text-sm mb-4">{product.description}</p>
-                      <Button variant="outline" className="w-full">
-                        Подробнее
-                      </Button>
-                    </div>
-                  </Card>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="left-0" />
-            <CarouselNext className="right-0" />
-          </Carousel>
+      <section id="products" className="py-32 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+        
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl font-heading font-bold mb-6">
+              Наша продукция
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Три линейки профессиональных средств для любых задач стайлинга
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {products.map((product, index) => (
+              <Card key={index} className="bg-card border-border overflow-hidden hover:shadow-2xl hover:border-primary transition-all duration-300 group">
+                <div className="aspect-square overflow-hidden bg-muted">
+                  <img 
+                    src={product.image} 
+                    alt={product.name} 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                  />
+                </div>
+                <div className="p-6">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-xs text-primary uppercase tracking-widest font-semibold">{product.category}</span>
+                    <span className="text-xs text-muted-foreground">{product.volume}</span>
+                  </div>
+                  <h3 className="text-2xl font-heading font-bold mb-3">{product.name}</h3>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">{product.description}</p>
+                  <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white">
+                    Подробнее
+                  </Button>
+                </div>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section id="about" className="py-24 bg-card">
+      <section id="about" className="py-32 bg-card relative">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6">
-                BearStyle — это не просто косметика
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div className="order-2 md:order-1">
+              <span className="text-primary text-sm uppercase tracking-widest font-semibold mb-4 block">О бренде</span>
+              <h2 className="text-5xl md:text-6xl font-heading font-bold mb-8 leading-tight">
+                BearStyle — это философия стиля
               </h2>
-              <p className="text-lg text-muted-foreground mb-4">
-                Мы создаем профессиональные средства для стайлинга, которые помогают барберам реализовывать самые смелые идеи. Наша продукция разработана совместно с ведущими мастерами индустрии и протестирована в реальных условиях барбершопов.
+              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                Мы создаем профессиональные средства для стайлинга, которые помогают барберам воплощать самые смелые идеи. Каждый продукт разработан совместно с ведущими мастерами индустрии и протестирован в реальных условиях барбершопов.
               </p>
-              <p className="text-lg text-muted-foreground mb-4">
+              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
                 За 5 лет работы мы стали надежным партнером для более чем 500 салонов по всей России. Наша миссия — обеспечить профессионалов инструментами, которые делают их работу проще, а результат — впечатляющим.
               </p>
-              <p className="text-lg text-muted-foreground">
-                Все продукты BearStyle имеют необходимые сертификаты качества и соответствуют международным стандартам безопасности.
-              </p>
+              <div className="grid grid-cols-3 gap-8 mt-10">
+                <div>
+                  <div className="text-4xl font-heading font-bold text-primary mb-2">500+</div>
+                  <div className="text-sm text-muted-foreground">Барбершопов</div>
+                </div>
+                <div>
+                  <div className="text-4xl font-heading font-bold text-primary mb-2">5 лет</div>
+                  <div className="text-sm text-muted-foreground">На рынке</div>
+                </div>
+                <div>
+                  <div className="text-4xl font-heading font-bold text-primary mb-2">100%</div>
+                  <div className="text-sm text-muted-foreground">Качество</div>
+                </div>
+              </div>
             </div>
-            <div className="relative h-96 md:h-full">
+            <div className="relative h-[600px] order-1 md:order-2">
               <img 
-                src="https://cdn.poehali.dev/projects/b977ae30-8b22-4b8d-8ef6-be415aeffd5d/files/a9e7c183-3f61-49b6-919e-545a77974d17.jpg" 
-                alt="О бренде BearStyle" 
+                src="https://source.unsplash.com/800x1000/?barber,work,man" 
+                alt="BearStyle профессиональная косметика" 
                 className="w-full h-full object-cover rounded-lg shadow-2xl"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-lg" />
             </div>
           </div>
         </div>
       </section>
 
-      <section id="contacts" className="py-24">
-        <div className="container mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-16">
-            Готовы к сотрудничеству?
-          </h2>
-          <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+      <section id="contacts" className="py-32 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'url(https://source.unsplash.com/1920x1080/?dark,pattern)', backgroundSize: 'cover' }} />
+        
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl font-heading font-bold mb-6">
+              Станьте партнером
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Заполните форму, и мы свяжемся с вами для обсуждения условий сотрудничества
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-16 max-w-6xl mx-auto">
             <div>
-              <h3 className="text-2xl font-heading font-semibold mb-6">Контактная информация</h3>
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <Icon name="Phone" size={24} className="text-primary mt-1" />
+              <h3 className="text-3xl font-heading font-bold mb-8">Контактная информация</h3>
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Icon name="Phone" size={24} className="text-primary" />
+                  </div>
                   <div>
-                    <p className="font-medium">Телефон</p>
-                    <p className="text-muted-foreground">+7 (495) 123-45-67</p>
+                    <p className="font-semibold mb-1">Телефон</p>
+                    <p className="text-muted-foreground text-lg">+7 (495) 123-45-67</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
-                  <Icon name="Mail" size={24} className="text-primary mt-1" />
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Icon name="Mail" size={24} className="text-primary" />
+                  </div>
                   <div>
-                    <p className="font-medium">Email</p>
-                    <p className="text-muted-foreground">info@bearstyle.ru</p>
+                    <p className="font-semibold mb-1">Email</p>
+                    <p className="text-muted-foreground text-lg">info@bearstyle.ru</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
-                  <Icon name="MapPin" size={24} className="text-primary mt-1" />
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Icon name="MapPin" size={24} className="text-primary" />
+                  </div>
                   <div>
-                    <p className="font-medium">Адрес</p>
-                    <p className="text-muted-foreground">г. Москва, ул. Барберская, д. 15</p>
+                    <p className="font-semibold mb-1">Адрес</p>
+                    <p className="text-muted-foreground text-lg">г. Москва, ул. Барберская, д. 15, офис 301</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
-                  <Icon name="Clock" size={24} className="text-primary mt-1" />
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Icon name="Clock" size={24} className="text-primary" />
+                  </div>
                   <div>
-                    <p className="font-medium">Режим работы</p>
-                    <p className="text-muted-foreground">Пн-Пт: 9:00 - 18:00</p>
+                    <p className="font-semibold mb-1">Режим работы</p>
+                    <p className="text-muted-foreground text-lg">Пн-Пт: 9:00 - 18:00<br />Сб-Вс: выходной</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div>
-              <h3 className="text-2xl font-heading font-semibold mb-6">Форма обратной связи</h3>
-              <form className="space-y-4">
-                <Input placeholder="Имя" className="bg-card" />
-                <Input placeholder="Компания" className="bg-card" />
-                <Input placeholder="Email" type="email" className="bg-card" />
-                <Input placeholder="Телефон" type="tel" className="bg-card" />
-                <Textarea placeholder="Сообщение" rows={4} className="bg-card" />
-                <div className="flex items-center gap-2">
-                  <Checkbox id="terms" />
-                  <label htmlFor="terms" className="text-sm text-muted-foreground cursor-pointer">
-                    Согласен с обработкой персональных данных
+            <Card className="bg-card border-border p-8">
+              <h3 className="text-3xl font-heading font-bold mb-8">Форма обратной связи</h3>
+              <form className="space-y-5">
+                <div>
+                  <Input placeholder="Ваше имя" className="bg-background border-border h-12" />
+                </div>
+                <div>
+                  <Input placeholder="Название компании" className="bg-background border-border h-12" />
+                </div>
+                <div>
+                  <Input placeholder="Email" type="email" className="bg-background border-border h-12" />
+                </div>
+                <div>
+                  <Input placeholder="Телефон" type="tel" className="bg-background border-border h-12" />
+                </div>
+                <div>
+                  <Textarea placeholder="Ваше сообщение" rows={5} className="bg-background border-border resize-none" />
+                </div>
+                <div className="flex items-start gap-3">
+                  <Checkbox id="terms" className="mt-1" />
+                  <label htmlFor="terms" className="text-sm text-muted-foreground cursor-pointer leading-relaxed">
+                    Согласен с обработкой персональных данных и условиями политики конфиденциальности
                   </label>
                 </div>
-                <Button className="w-full bg-primary hover:bg-primary/90 text-white font-medium">
+                <Button className="w-full bg-primary hover:bg-primary/90 text-white font-semibold h-12 text-base shadow-lg">
                   Отправить запрос
                 </Button>
               </form>
-            </div>
+            </Card>
           </div>
         </div>
       </section>
 
-      <footer className="bg-card py-12 border-t border-border">
+      <footer className="bg-background py-16 border-t border-border">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
+          <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div>
-              <div className="text-3xl font-heading font-bold text-primary mb-4">BearStyle</div>
-              <p className="text-muted-foreground text-sm">
-                Профессиональная косметика для барберов и салонов
+              <div className="text-3xl font-heading font-bold text-primary mb-4">🐻 BEARSTYLE</div>
+              <p className="text-muted-foreground leading-relaxed">
+                Профессиональная косметика для барберов и салонов красоты
               </p>
             </div>
             <div>
-              <h4 className="font-heading font-semibold mb-4">Навигация</h4>
-              <nav className="flex flex-col gap-2">
-                <a className="text-muted-foreground hover:text-primary transition-colors cursor-pointer text-sm">Главная</a>
-                <a className="text-muted-foreground hover:text-primary transition-colors cursor-pointer text-sm">Преимущества</a>
-                <a className="text-muted-foreground hover:text-primary transition-colors cursor-pointer text-sm">Продукция</a>
-                <a className="text-muted-foreground hover:text-primary transition-colors cursor-pointer text-sm">О нас</a>
+              <h4 className="font-heading font-bold mb-4 text-lg">Навигация</h4>
+              <nav className="flex flex-col gap-3">
+                <a className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">Главная</a>
+                <a className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">Преимущества</a>
+                <a className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">Продукция</a>
+                <a className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">О бренде</a>
               </nav>
             </div>
             <div>
-              <h4 className="font-heading font-semibold mb-4">Контакты</h4>
-              <div className="flex flex-col gap-2 text-sm text-muted-foreground">
+              <h4 className="font-heading font-bold mb-4 text-lg">Контакты</h4>
+              <div className="flex flex-col gap-3 text-muted-foreground">
                 <p>+7 (495) 123-45-67</p>
                 <p>info@bearstyle.ru</p>
-                <p>г. Москва</p>
+                <p>г. Москва, ул. Барберская, 15</p>
               </div>
             </div>
             <div>
-              <h4 className="font-heading font-semibold mb-4">Социальные сети</h4>
+              <h4 className="font-heading font-bold mb-4 text-lg">Социальные сети</h4>
               <div className="flex gap-4">
-                <a className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center hover:bg-primary/30 transition-colors cursor-pointer">
-                  <Icon name="Instagram" size={20} className="text-primary" />
+                <a className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary transition-all cursor-pointer group">
+                  <Icon name="Instagram" size={22} className="text-primary group-hover:text-white transition-colors" />
                 </a>
-                <a className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center hover:bg-primary/30 transition-colors cursor-pointer">
-                  <Icon name="Facebook" size={20} className="text-primary" />
+                <a className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary transition-all cursor-pointer group">
+                  <Icon name="Facebook" size={22} className="text-primary group-hover:text-white transition-colors" />
+                </a>
+                <a className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary transition-all cursor-pointer group">
+                  <Icon name="Send" size={22} className="text-primary group-hover:text-white transition-colors" />
                 </a>
               </div>
             </div>
           </div>
-          <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
-            © 2024 BearStyle. Все права защищены.
+          <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-sm text-muted-foreground">© 2024 BearStyle. Все права защищены.</p>
+            <div className="flex gap-6 text-sm text-muted-foreground">
+              <a className="hover:text-primary transition-colors cursor-pointer">Политика конфиденциальности</a>
+              <a className="hover:text-primary transition-colors cursor-pointer">Условия использования</a>
+            </div>
           </div>
         </div>
       </footer>
